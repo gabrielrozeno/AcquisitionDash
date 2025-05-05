@@ -1,0 +1,14 @@
+{
+  "node": {
+    "87220ec32b6a44cc300b18038a4228403b7c17ed": {
+      "workers": {
+        "app/edit/[id]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CGabriel%5C%5CDocuments%5C%5CAcquisitionDash%5C%5Csrc%5C%5Capp%5C%5Cedit%5C%5C%5Bid%5D%5C%5Cpage.tsx%22%2C%5B%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/edit/[id]/page": "rsc"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "c0w4A88ewpO1aKJ0ZT2YVyK5fBYnvyCAORKfPx9hh6g="
+}
