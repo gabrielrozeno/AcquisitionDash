@@ -18,10 +18,14 @@ export default async function Home({
   // Build the where clause for filtering
   const where: any = {}
   if (searchParams.startDate) {
-    where.date = { ...where.date, gte: new Date(searchParams.startDate) }
+    const startDate = new Date(searchParams.startDate)
+    startDate.setUTCHours(0, 0, 0, 0)
+    where.date = { ...where.date, gte: startDate }
   }
   if (searchParams.endDate) {
-    where.date = { ...where.date, lte: new Date(searchParams.endDate) }
+    const endDate = new Date(searchParams.endDate)
+    endDate.setUTCHours(23, 59, 59, 999)
+    where.date = { ...where.date, lte: endDate }
   }
   if (searchParams.platform) {
     where.platform = searchParams.platform

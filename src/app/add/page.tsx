@@ -20,13 +20,17 @@ export default function AddEntry() {
       ftds: parseInt(formData.get('ftds') as string),
     }
 
+    // Create date at noon UTC to avoid timezone issues
+    const date = new Date(data.date as string)
+    date.setUTCHours(12, 0, 0, 0)
+
     try {
       const response = await fetch('/api/ad-spend', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, date }),
       })
 
       if (!response.ok) {
