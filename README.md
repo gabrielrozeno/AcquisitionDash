@@ -13,9 +13,9 @@ A simple web dashboard to track and analyze advertising spend and performance me
 ## Tech Stack
 
 - **Frontend**: Next.js 14 (App Router), TypeScript, TailwindCSS
-- **Database**: SQLite
+- **Database**: MongoDB
 - **ORM**: Prisma
-- **Deployment**: Vercel (or local)
+- **Deployment**: Vercel
 
 ## Getting Started
 
@@ -37,6 +37,19 @@ A simple web dashboard to track and analyze advertising spend and performance me
    ```
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Deployment to Vercel
+
+1. Push your code to a GitHub repository
+
+2. Go to [Vercel](https://vercel.com) and create a new project
+
+3. Import your GitHub repository
+
+4. Configure the following environment variables in Vercel:
+   - `DATABASE_URL`: Your MongoDB connection string
+
+5. Deploy!
 
 ## Project Structure
 
