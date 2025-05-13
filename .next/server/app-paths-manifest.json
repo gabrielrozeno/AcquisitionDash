@@ -1,7 +1,3 @@
 {
-  "/not-found": "app/not-found.js",
-  "/page": "app/page.js",
-  "/api/clear-data/route": "app/api/clear-data/route.js",
-  "/api/adspend/route": "app/api/adspend/route.js",
-  "/api/upload-registrations/route": "app/api/upload-registrations/route.js"
+  "/page": "app/page.js"
 }

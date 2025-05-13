@@ -14,17 +14,12 @@ export async function POST(request: Request) {
       );
     }
 
-    console.log('Processing file:', file.name);
     const fileContent = await file.text();
-    console.log('File content:', fileContent);
-
     const records = parse(fileContent, {
       columns: true,
       skip_empty_lines: true,
       delimiter: ',',
     });
-
-    console.log('Parsed records:', records);
 
     if (!records.length) {
       return NextResponse.json(
@@ -47,34 +42,13 @@ export async function POST(request: Request) {
     const results = await Promise.all(
       records.map(async (record: any) => {
         try {
-          // Log the raw date string from the CSV
-          console.log('Raw date from CSV:', record.date);
-          
-          // Split the date and log each part
           const [day, month, year] = record.date.split('/');
-          console.log('Split date parts:', { day, month, year });
-          
-          // Parse the date parts as integers
           const parsedDay = parseInt(day);
           const parsedMonth = parseInt(month);
           const parsedYear = parseInt(year);
-          console.log('Parsed date parts:', { parsedDay, parsedMonth, parsedYear });
           
           // Create date in UTC at noon to avoid timezone issues
           const date = new Date(Date.UTC(parsedYear, parsedMonth - 1, parsedDay, 12, 0, 0, 0));
-          
-          // Log the date at various stages
-          console.log('Date conversion details:', {
-            original: record.date,
-            splitParts: [day, month, year],
-            parsedParts: [parsedDay, parsedMonth, parsedYear],
-            utcDate: date.toISOString(),
-            localDate: date.toString(),
-            utcHours: date.getUTCHours(),
-            utcDay: date.getUTCDate(),
-            utcMonth: date.getUTCMonth() + 1,
-            utcYear: date.getUTCFullYear()
-          });
 
           if (isNaN(date.getTime())) {
             throw new Error(`Invalid date format: ${record.date}`);
@@ -95,7 +69,6 @@ export async function POST(request: Request) {
             throw new Error(`Invalid ftds value: ${record.ftds}`);
           }
 
-          // Create the data object with the correct field names
           const data = {
             date,
             platform: record.platform,
@@ -105,7 +78,6 @@ export async function POST(request: Request) {
             registrations,
           };
 
-          console.log('Creating record with data:', data);
           return prisma.adSpend.create({ data });
         } catch (error) {
           console.error('Error processing record:', record, error);
