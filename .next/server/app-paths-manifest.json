@@ -1,4 +1,5 @@
 {
-  "/api/adspend/route": "app/api/adspend/route.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/add/page": "app/add/page.js",
+  "/api/adspend/route": "app/api/adspend/route.js"
 }

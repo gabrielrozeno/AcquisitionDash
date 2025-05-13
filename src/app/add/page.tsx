@@ -16,7 +16,6 @@ export default function AddEntry() {
       date: formData.get('date'),
       platform: formData.get('platform'),
       spend: parseFloat(formData.get('spend') as string),
-      leads: parseInt(formData.get('leads') as string),
       ftds: parseInt(formData.get('ftds') as string),
       registrations: parseInt(formData.get('registrations') as string),
     }
@@ -102,20 +101,6 @@ export default function AddEntry() {
                 id="spend"
                 name="spend"
                 step="0.01"
-                min="0"
-                required
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="leads" className="block text-sm font-medium text-gray-700">
-                Number of Leads
-              </label>
-              <input
-                type="number"
-                id="leads"
-                name="leads"
                 min="0"
                 required
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"

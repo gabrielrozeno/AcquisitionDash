@@ -7,7 +7,6 @@ interface EditFormProps {
   initialDate: string
   initialPlatform: string
   initialSpend: number
-  initialLeads: number
   initialFtds: number
   initialRegistrations: number
 }
@@ -17,7 +16,6 @@ export default function EditForm({
   initialDate,
   initialPlatform,
   initialSpend,
-  initialLeads,
   initialFtds,
   initialRegistrations,
 }: EditFormProps) {
@@ -64,18 +62,6 @@ export default function EditForm({
           min="0"
           required
           defaultValue={initialSpend}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
-        />
-      </div>
-      <div>
-        <label htmlFor="leads" className="block text-sm font-medium text-gray-700">Number of Leads</label>
-        <input
-          type="number"
-          id="leads"
-          name="leads"
-          min="0"
-          required
-          defaultValue={initialLeads}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
         />
       </div>
