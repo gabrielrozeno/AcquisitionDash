@@ -14,6 +14,7 @@ import {
   ArcElement,
 } from 'chart.js';
 import { Line, Bar, Pie } from 'react-chartjs-2';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 ChartJS.register(
   CategoryScale,
@@ -67,7 +68,7 @@ export default function DashboardGraphs({ startDate, endDate }: DashboardGraphsP
   }, [startDate, endDate]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="flex items-center justify-center h-96">Loading...</div>;
   }
 
   // Process data for charts
@@ -199,20 +200,32 @@ export default function DashboardGraphs({ startDate, endDate }: DashboardGraphsP
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-      <div className="bg-white p-4 rounded-lg shadow">
-        <h2 className="text-xl font-bold mb-4">FTDs per Platform</h2>
-        <Pie data={ftdData} options={pieChartOptions} />
-      </div>
+      <Card>
+        <CardHeader>
+          <CardTitle>FTDs per Platform</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Pie data={ftdData} options={pieChartOptions} />
+        </CardContent>
+      </Card>
       
-      <div className="bg-white p-4 rounded-lg shadow">
-        <h2 className="text-xl font-bold mb-4">Registrations per Platform</h2>
-        <Pie data={registrationData} options={pieChartOptions} />
-      </div>
+      <Card>
+        <CardHeader>
+          <CardTitle>Registrations per Platform</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Pie data={registrationData} options={pieChartOptions} />
+        </CardContent>
+      </Card>
       
-      <div className="bg-white p-4 rounded-lg shadow">
-        <h2 className="text-xl font-bold mb-4">Financial Overview</h2>
-        <Bar data={financialData} options={chartOptions} />
-      </div>
+      <Card>
+        <CardHeader>
+          <CardTitle>Financial Overview</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Bar data={financialData} options={chartOptions} />
+        </CardContent>
+      </Card>
     </div>
   );
 } 

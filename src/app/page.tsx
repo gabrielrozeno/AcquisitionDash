@@ -5,6 +5,8 @@ import DeleteButton from './components/DeleteButton'
 import FilterBar from './components/FilterBar'
 import DashboardGraphs from './components/DashboardGraphs'
 import { UploadRegistrations } from '@/components/UploadRegistrations'
+import DateFilterWrapper from './components/DateFilterWrapper'
+import Header from './components/Header'
 
 export default async function Home({
   searchParams,
@@ -48,19 +50,11 @@ export default async function Home({
   const cpf = totalFtds > 0 ? totalSpend / totalFtds : 0
 
   return (
-    <main className="min-h-screen p-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">RVBet Dashboard</h1>
-          <Link
-            href="/add"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
-          >
-            Add New Entry
-          </Link>
-        </div>
+    <main className="min-h-screen bg-background p-4 md:p-8">
+      <div className="max-w-7xl mx-auto space-y-8">
+        <Header />
 
-        <FilterBar platforms={platforms.map(p => p.platform)} />
+        <DateFilterWrapper />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           <MetricCard title="Total Spend" value={`$${totalSpend.toFixed(2)}`} />
