@@ -18,6 +18,7 @@ export default function AddEntry() {
       spend: parseFloat(formData.get('spend') as string),
       leads: parseInt(formData.get('leads') as string),
       ftds: parseInt(formData.get('ftds') as string),
+      registrations: parseInt(formData.get('registrations') as string),
     }
 
     // Create date at noon UTC to avoid timezone issues
@@ -129,6 +130,20 @@ export default function AddEntry() {
                 type="number"
                 id="ftds"
                 name="ftds"
+                min="0"
+                required
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="registrations" className="block text-sm font-medium text-gray-700">
+                Number of Registrations
+              </label>
+              <input
+                type="number"
+                id="registrations"
+                name="registrations"
                 min="0"
                 required
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"

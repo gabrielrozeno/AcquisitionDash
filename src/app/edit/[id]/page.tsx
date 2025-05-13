@@ -21,6 +21,7 @@ export default async function EditEntry({ params }: { params: { id: string } }) 
           initialSpend={ad.spend}
           initialLeads={ad.leads}
           initialFtds={ad.ftds}
+          initialRegistrations={ad.registrations}
         />
       </div>
     </main>

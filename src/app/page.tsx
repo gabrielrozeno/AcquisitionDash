@@ -3,6 +3,7 @@ import { format } from 'date-fns'
 import Link from 'next/link'
 import DeleteButton from './components/DeleteButton'
 import FilterBar from './components/FilterBar'
+import DashboardGraphs from './components/DashboardGraphs'
 
 export default async function Home({
   searchParams,
@@ -39,10 +40,10 @@ export default async function Home({
   })
 
   const totalSpend = adSpends.reduce((sum, ad) => sum + ad.spend, 0)
-  const totalLeads = adSpends.reduce((sum, ad) => sum + ad.leads, 0)
+  const totalRegistrations = adSpends.reduce((sum, ad) => sum + ad.registrations, 0)
   const totalFtds = adSpends.reduce((sum, ad) => sum + ad.ftds, 0)
 
-  const cpl = totalLeads > 0 ? totalSpend / totalLeads : 0
+  const cpr = totalRegistrations > 0 ? totalSpend / totalRegistrations : 0
   const cpf = totalFtds > 0 ? totalSpend / totalFtds : 0
 
   return (
@@ -62,10 +63,14 @@ export default async function Home({
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           <MetricCard title="Total Spend" value={`$${totalSpend.toFixed(2)}`} />
-          <MetricCard title="Total Leads" value={totalLeads.toString()} />
+          <MetricCard title="Total Registrations" value={totalRegistrations.toString()} />
           <MetricCard title="Total FTDs" value={totalFtds.toString()} />
-          <MetricCard title="CPL" value={`$${cpl.toFixed(2)}`} />
+          <MetricCard title="Cost per Registration" value={`$${cpr.toFixed(2)}`} />
           <MetricCard title="Cost per FTD" value={`$${cpf.toFixed(2)}`} />
+        </div>
+
+        <div className="mb-8">
+          <DashboardGraphs />
         </div>
 
         <div className="bg-white rounded-lg shadow p-6">
@@ -82,9 +87,9 @@ export default async function Home({
                     <th className="text-left py-2">Date</th>
                     <th className="text-left py-2">Platform</th>
                     <th className="text-right py-2">Spend</th>
-                    <th className="text-right py-2">Leads</th>
+                    <th className="text-right py-2">Registrations</th>
                     <th className="text-right py-2">FTDs</th>
-                    <th className="text-right py-2">CPL</th>
+                    <th className="text-right py-2">CPR</th>
                     <th className="text-right py-2">Cost per FTD</th>
                     <th className="text-right py-2">Edit</th>
                     <th className="text-right py-2">Delete</th>
@@ -92,7 +97,7 @@ export default async function Home({
                 </thead>
                 <tbody>
                   {adSpends.map((ad) => {
-                    const adCpl = ad.leads > 0 ? ad.spend / ad.leads : 0
+                    const adCpr = ad.registrations > 0 ? ad.spend / ad.registrations : 0
                     const adCpf = ad.ftds > 0 ? ad.spend / ad.ftds : 0
                     
                     return (
@@ -100,9 +105,9 @@ export default async function Home({
                         <td className="py-2">{format(ad.date, 'MMM d, yyyy')}</td>
                         <td className="py-2">{ad.platform}</td>
                         <td className="text-right py-2">${ad.spend.toFixed(2)}</td>
-                        <td className="text-right py-2">{ad.leads}</td>
+                        <td className="text-right py-2">{ad.registrations}</td>
                         <td className="text-right py-2">{ad.ftds}</td>
-                        <td className="text-right py-2">${adCpl.toFixed(2)}</td>
+                        <td className="text-right py-2">${adCpr.toFixed(2)}</td>
                         <td className="text-right py-2">${adCpf.toFixed(2)}</td>
                         <td className="text-right py-2">
                           <Link href={`/edit/${ad.id}`} className="text-blue-600 hover:underline">Edit</Link>

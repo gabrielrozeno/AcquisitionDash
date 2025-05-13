@@ -11,12 +11,13 @@ datasource db {
 }
 
 model AdSpend {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  date      DateTime
-  platform  String
-  spend     Float
-  leads     Int
-  ftds      Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  date          DateTime
+  platform      String
+  spend         Float
+  leads         Int
+  ftds          Int
+  registrations Int
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }

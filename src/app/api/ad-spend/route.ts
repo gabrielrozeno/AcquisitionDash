@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { date, platform, spend, leads, ftds } = body
+    const { date, platform, spend, leads, ftds, registrations } = body
 
     // Ensure date is at noon UTC
     const normalizedDate = new Date(date)
@@ -17,6 +17,7 @@ export async function POST(request: Request) {
         spend,
         leads,
         ftds,
+        registrations,
       },
     })
 

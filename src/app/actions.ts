@@ -10,6 +10,7 @@ export async function updateEntry(id: string, formData: FormData) {
     spend: parseFloat(formData.get('spend') as string),
     leads: parseInt(formData.get('leads') as string),
     ftds: parseInt(formData.get('ftds') as string),
+    registrations: parseInt(formData.get('registrations') as string),
   }
 
   // Create date at noon UTC to avoid timezone issues
@@ -24,6 +25,7 @@ export async function updateEntry(id: string, formData: FormData) {
       spend: data.spend,
       leads: data.leads,
       ftds: data.ftds,
+      registrations: data.registrations,
     },
   })
   redirect('/')

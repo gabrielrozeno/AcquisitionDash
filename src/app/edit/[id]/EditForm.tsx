@@ -9,6 +9,7 @@ interface EditFormProps {
   initialSpend: number
   initialLeads: number
   initialFtds: number
+  initialRegistrations: number
 }
 
 export default function EditForm({
@@ -18,6 +19,7 @@ export default function EditForm({
   initialSpend,
   initialLeads,
   initialFtds,
+  initialRegistrations,
 }: EditFormProps) {
   return (
     <form action={async (formData: FormData) => updateEntry(id, formData)} className="bg-white rounded-lg shadow p-6 space-y-4">
@@ -86,6 +88,18 @@ export default function EditForm({
           min="0"
           required
           defaultValue={initialFtds}
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+        />
+      </div>
+      <div>
+        <label htmlFor="registrations" className="block text-sm font-medium text-gray-700">Number of Registrations</label>
+        <input
+          type="number"
+          id="registrations"
+          name="registrations"
+          min="0"
+          required
+          defaultValue={initialRegistrations}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
         />
       </div>
