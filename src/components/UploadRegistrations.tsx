@@ -63,9 +63,9 @@ export function UploadRegistrations() {
     <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
       <div className="p-6 space-y-4">
         <div className="flex flex-col space-y-1.5">
-          <h3 className="text-2xl font-semibold leading-none tracking-tight">Upload Registrations</h3>
+          <h3 className="text-2xl font-semibold leading-none tracking-tight">Upload from CSV</h3>
           <p className="text-sm text-muted-foreground">
-            Upload your CSV file containing registration data
+            Upload your CSV file containing data from your ad campaigns
           </p>
         </div>
         
