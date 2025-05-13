@@ -6,9 +6,9 @@ export async function POST(request: Request) {
     const body = await request.json()
     const { date, platform, spend, ftds, registrations } = body
 
-    // Ensure date is at noon UTC
+    // Ensure date is at UTC midnight
     const normalizedDate = new Date(date)
-    normalizedDate.setUTCHours(12, 0, 0, 0)
+    normalizedDate.setUTCHours(0, 0, 0, 0)
 
     const adSpend = await prisma.adSpend.create({
       data: {

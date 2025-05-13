@@ -12,9 +12,9 @@ export async function updateEntry(id: string, formData: FormData) {
     registrations: parseInt(formData.get('registrations') as string),
   }
 
-  // Create date at noon UTC to avoid timezone issues
+  // Create date at UTC midnight to avoid timezone issues
   const date = new Date(data.date as string)
-  date.setUTCHours(12, 0, 0, 0)
+  date.setUTCHours(0, 0, 0, 0)
 
   await prisma.adSpend.update({
     where: { id },

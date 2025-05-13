@@ -20,13 +20,13 @@ export default async function Home({
   // Build the where clause for filtering
   const where: any = {}
   if (searchParams.startDate) {
-    const startDate = new Date(searchParams.startDate)
-    startDate.setUTCHours(0, 0, 0, 0)
+    const [year, month, day] = searchParams.startDate.split('-').map(Number)
+    const startDate = new Date(Date.UTC(year, month - 1, day, 0, 0, 0, 0))
     where.date = { ...where.date, gte: startDate }
   }
   if (searchParams.endDate) {
-    const endDate = new Date(searchParams.endDate)
-    endDate.setUTCHours(23, 59, 59, 999)
+    const [year, month, day] = searchParams.endDate.split('-').map(Number)
+    const endDate = new Date(Date.UTC(year, month - 1, day, 23, 59, 59, 999))
     where.date = { ...where.date, lte: endDate }
   }
   if (searchParams.platform) {
@@ -71,7 +71,7 @@ export default async function Home({
         </div>
 
         <div className="mb-8">
-          <DashboardGraphs />
+          <DashboardGraphs startDate={searchParams.startDate} endDate={searchParams.endDate} />
         </div>
 
         <div className="bg-white rounded-lg shadow p-6">

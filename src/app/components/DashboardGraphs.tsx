@@ -36,15 +36,29 @@ interface AdSpend {
   registrations: number;
 }
 
-export default function DashboardGraphs() {
+interface DashboardGraphsProps {
+  startDate?: string;
+  endDate?: string;
+}
+
+export default function DashboardGraphs({ startDate, endDate }: DashboardGraphsProps) {
   const [data, setData] = useState<AdSpend[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/adspend');
+        console.log('DashboardGraphs fetching data with dates:', { startDate, endDate })
+        const params = new URLSearchParams();
+        if (startDate) params.append('startDate', startDate);
+        if (endDate) params.append('endDate', endDate);
+        
+        const url = `/api/adspend?${params.toString()}`;
+        console.log('Fetching from URL:', url);
+        
+        const response = await fetch(url);
         const jsonData = await response.json();
+        console.log('Received data count:', jsonData.length);
         setData(jsonData);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -54,7 +68,7 @@ export default function DashboardGraphs() {
     };
 
     fetchData();
-  }, []);
+  }, [startDate, endDate]);
 
   if (loading) {
     return <div>Loading...</div>;
