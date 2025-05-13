@@ -4,6 +4,7 @@ import Link from 'next/link'
 import DeleteButton from './components/DeleteButton'
 import FilterBar from './components/FilterBar'
 import DashboardGraphs from './components/DashboardGraphs'
+import { UploadRegistrations } from '@/components/UploadRegistrations'
 
 export default async function Home({
   searchParams,
@@ -123,6 +124,8 @@ export default async function Home({
             </div>
           )}
         </div>
+
+        <UploadRegistrations />
       </div>
     </main>
   )
