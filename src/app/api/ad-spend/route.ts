@@ -15,6 +15,7 @@ export async function POST(request: Request) {
         date: normalizedDate,
         platform,
         spend,
+        leads: 0,
         ftds,
         registrations,
       },

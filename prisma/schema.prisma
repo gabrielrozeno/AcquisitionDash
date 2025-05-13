@@ -3,6 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -15,7 +16,7 @@ model AdSpend {
   date          DateTime
   platform      String
   spend         Float
-  leads         Int
+  leads         Int?
   ftds          Int
   registrations Int
   createdAt     DateTime @default(now())

@@ -22,6 +22,7 @@ export async function updateEntry(id: string, formData: FormData) {
       date,
       platform: data.platform as string,
       spend: data.spend,
+      leads: 0,
       ftds: data.ftds,
       registrations: data.registrations,
     },
